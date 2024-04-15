@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LoginDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=&quot;C:\Users\Lenovo\OneDrive - General Sir John Kotelawala Defence University\Documents\LoginDB.mdf&quot;;Integrated Security=True;Connect Timeout=30;Encrypt=True" SettingsObjectName="User_Login.Properties.Settings" SettingsPropertyName="LoginDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.admin" Member="admins">
+    <Type Name="admin">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NIC_Number" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Pass_word" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Re_password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="tel_no" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="admin_ord" Member="ords" ThisKey="id" OtherKey="id" Type="ord" />
+      <Association Name="admin_ord1" Member="ord" ThisKey="id" OtherKey="vehicle_ID" Type="ord" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ord" Member="ords">
+    <Type Name="ord">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="vehicle_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pick_up" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="destination" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="passengers" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="rent_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="need_driver" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="admin_ord" Member="admin" ThisKey="id" OtherKey="id" Type="admin" IsForeignKey="true" />
+      <Association Name="admin_ord1" Member="admin1" ThisKey="vehicle_ID" OtherKey="id" Type="admin" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
